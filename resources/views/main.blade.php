@@ -43,7 +43,7 @@
                     <input type="text" placeholder="Search games..." class="bg-[#303030] text-white px-4 py-2 rounded-full w-64 focus:outline-none">
                     <i class="fas fa-search absolute right-4 top-3 text-gray-400"></i>
                 </div>
-                <button class="bg-[#0074E4] px-4 py-2 rounded hover:bg-[#0064c4]">
+                <button class="bg-[#ffffff] px-4 py-2 text-black rounded hover:bg-[#787a7d]">
                     Sign In
                 </button>
             </div>
@@ -59,7 +59,7 @@
                         <p class="text-lg text-gray-300 mb-6">Experience the untold story of Wukong, the Monkey King, as he battles mythical creatures and uncovers ancient secrets in a breathtaking open-world adventure.</p>                        
                         <div class="space-x-4">
                             <span class="text-2xl font-bold">Rp 699.999</span>
-                            <button class="bg-[#0074E4] px-8 py-3 rounded font-medium hover:bg-[#0064c4]">
+                            <button class="bg-[#ffffff] px-8 py-3 rounded font-medium text-black hover:bg-[#787a7d]">
                                 Buy Now
                             </button>
                             <button class="bg-[#303030] px-8 py-3 rounded font-medium hover:bg-[#404040]">
@@ -150,25 +150,81 @@
             </div>
         </div>
 
+<!-- Free Games Section -->
+<div class="p-8 bg-[#121212]">
+    <h2 class="text-2xl font-bold mb-6">Free Games</h2>
+    <div class="relative">
+        <!-- Previous Button -->
+        <button id="prevButton" onclick="prevSlide()" class="absolute left-0 top-1/2 -translate-y-1/2 z-10 p-2 bg-black/50 rounded-full hover:bg-black/70 disabled:opacity-50 disabled:cursor-not-allowed">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+        </button>
 
-        <!-- Free Games Section -->
-        <div class="p-8 bg-[#121212]">
-            <h2 class="text-2xl font-bold mb-6">Free Games</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                @for ($i = 1; $i <= 3; $i++)
-                <div class="bg-[#202020] rounded-lg overflow-hidden">
-                    <img src="https://via.placeholder.com/600x400" alt="Free Game" class="w-full h-48 object-cover">
-                    <div class="p-4">
-                        <h3 class="text-lg font-medium mb-2">Free Game {{ $i }}</h3>
-                        <p class="text-gray-400 text-sm mb-4">Free until 01/30/2025</p>
-                        <button class="w-full bg-[#0074E4] py-2 rounded font-medium hover:bg-[#0064c4]">
-                            Get Now
-                        </button>
+        <!-- Slider Container -->
+        <div class="overflow-hidden mx-12">
+            <div id="slider" class="flex transition-transform duration-300 ease-in-out">
+                <div class="grid grid-cols-3 gap-6 min-w-full">
+                    @for ($i = 1; $i <= 3; $i++)
+                    <div class="w-full">
+                        <div class="bg-[#202020] rounded-lg overflow-hidden">
+                            <img src="https://via.placeholder.com/600x400" alt="Free Game" class="w-full h-48 object-cover">
+                            <div class="p-4">
+                                <h3 class="text-lg font-medium mb-2">Free Game {{ $i }}</h3>
+                                <p class="text-gray-400 text-sm mb-4">Free until 01/30/2025</p>
+                                <button class="w-full bg-[#0074E4] py-2 rounded font-medium hover:bg-[#0064c4]">
+                                    Get Now
+                                </button>
+                            </div>
+                        </div>
                     </div>
+                    @endfor
                 </div>
-                @endfor
             </div>
         </div>
+
+        <!-- Next Button -->
+        <button id="nextButton" onclick="nextSlide()" class="absolute right-0 top-1/2 -translate-y-1/2 z-10 p-2 bg-black/50 rounded-full hover:bg-black/70 disabled:opacity-50 disabled:cursor-not-allowed">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+        </button>
+    </div>
+</div>
+
+<script>
+    let currentIndex = 0;
+    const slider = document.getElementById('slider');
+    const prevButton = document.getElementById('prevButton');
+    const nextButton = document.getElementById('nextButton');
+    const totalGroups = 2; // Total number of groups (6 items / 3 per view = 2 groups)
+
+    function updateSlider() {
+        // Move the slider by 100% for each group
+        slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+        
+        // Update button states
+        prevButton.disabled = currentIndex === 0;
+        nextButton.disabled = currentIndex === totalGroups - 1;
+    }
+
+    function nextSlide() {
+        if (currentIndex < totalGroups - 1) {
+            currentIndex++;
+            updateSlider();
+        }
+    }
+
+    function prevSlide() {
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateSlider();
+        }
+    }
+
+    // Initialize slider
+    updateSlider();
+</script>
 
         <!-- Footer -->
         <footer class="bg-[#202020] p-8">
