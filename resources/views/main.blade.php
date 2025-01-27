@@ -16,10 +16,10 @@
     </style>
 </head>
 <body class="text-white">
-    <!-- Sidebar Navigation (Epic Games Style) -->
+    <!-- Sidebar Navigation -->
     <div class="fixed left-0 top-0 h-full w-16 bg-[#202020] z-50 flex flex-col items-center py-4">
         <div class="mb-8">
-            <img src="https://via.placeholder.com/40" alt="Logo" class="w-10 h-10 rounded">
+            <img src="images/fire link shrine.png" alt="Logo" class="w-10 h-10 rounded">
         </div>
         <nav class="flex flex-col items-center space-y-6">
             <a href="#" class="text-gray-400 hover:text-white"><i class="fas fa-home text-xl"></i></a>
@@ -50,13 +50,13 @@
         </nav>
 
         <!-- Hero Carousel -->
-        <div class="relative h-[500px] bg-[#202020]">
-            <div class="absolute inset-0 bg-center bg-cover" style="background-image: url('https://via.placeholder.com/1920x500');">
+        <div class="relative w-full h-[500px] bg-[#202020]">
+            <div class="absolute inset-0 bg-center bg-cover w-full " style="background-image: url('{{ asset('images/bmm.jpg') }}'); background-size: 90%;">
                 <div class="absolute inset-0 bg-gradient-to-r from-black/70"></div>
                 <div class="relative h-full flex items-center px-12">
                     <div class="max-w-2xl">
-                        <h1 class="text-5xl font-bold mb-4">Featured Game Title</h1>
-                        <p class="text-lg text-gray-300 mb-6">Experience the epic adventure in this groundbreaking new release.</p>
+                        <h1 class="text-5xl font-bold mb-4">Black Myth Wukong</h1>
+                        <p class="text-lg text-gray-300 mb-6">Experience the untold story of Wukong, the Monkey King, as he battles mythical creatures and uncovers ancient secrets in a breathtaking open-world adventure.</p>                        
                         <div class="space-x-4">
                             <span class="text-2xl font-bold">$59.99</span>
                             <button class="bg-[#0074E4] px-8 py-3 rounded font-medium hover:bg-[#0064c4]">
@@ -70,6 +70,7 @@
                 </div>
             </div>
         </div>
+        
 
         <!-- Games Grid -->
         <div class="p-8 bg-[#121212]">
