@@ -58,12 +58,12 @@
                         <h1 class="text-5xl font-bold mb-4">Black Myth Wukong</h1>
                         <p class="text-lg text-gray-300 mb-6">Experience the untold story of Wukong, the Monkey King, as he battles mythical creatures and uncovers ancient secrets in a breathtaking open-world adventure.</p>                        
                         <div class="space-x-4">
-                            <span class="text-2xl font-bold">$59.99</span>
+                            <span class="text-2xl font-bold">Rp 699.999</span>
                             <button class="bg-[#0074E4] px-8 py-3 rounded font-medium hover:bg-[#0064c4]">
                                 Buy Now
                             </button>
                             <button class="bg-[#303030] px-8 py-3 rounded font-medium hover:bg-[#404040]">
-                                Add to Wishlist
+                                Add to Cart
                             </button>
                         </div>
                     </div>
@@ -71,35 +71,85 @@
             </div>
         </div>
         
-
         <!-- Games Grid -->
         <div class="p-8 bg-[#121212]">
             <h2 class="text-2xl font-bold mb-6">Popular Games</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                @php
+                    // Array gambar untuk setiap game
+                    $images = [
+                        'images/elden ring.jpeg',
+                        'images/sekiro.jpeg',
+                        'images/re4.jpeg',
+                        'images/lou.jpeg',
+                        'images/re2.jpeg',
+                        'images/aco.jpeg',
+                        'images/fc25.jpeg',
+                        'images/gos.jpeg'
+                    ];
+
+                    // Array judul game untuk setiap game
+                    $titles = [
+                        'Elden Ring',
+                        'Sekiro: Shadows Die Twice - GOTY Edition',
+                        'Resident Evil 4 Remake',
+                        'The Last of Us Part II',
+                        'Resident Evil 2 Remake',
+                        'Assasins Creed Odyssey',
+                        'EA Sports FIFA 25',
+                        'Ghost of Tsushima'
+                    ];
+
+                    // Array harga untuk setiap game
+                    $prices = [
+                        'Rp 699.999',
+                        'Rp 499.999',
+                        'Rp 799.999',
+                        'Rp 899.999',
+                        'Rp 649.999',
+                        'Rp 749.999',
+                        'Rp 899.999',
+                        'Rp 799.999'
+                    ];
+
+                    // Array kategori untuk setiap game
+                    $categories = [
+                        'Action, RPG',
+                        'Action, Adventure',
+                        'Horror, Action',
+                        'Action, Adventure',
+                        'Horror, Action',
+                        'Action, RPG',
+                        'Sports, Action',
+                        'Action, Adventure'
+                    ];
+                @endphp
+                
                 @for ($i = 1; $i <= 8; $i++)
                 <div class="game-card relative group">
                     <div class="relative">
-                        <img src="https://via.placeholder.com/600x400" alt="Game" class="w-full h-64 object-cover rounded">
+                        <img src="{{ asset($images[$i-1]) }}" alt="Game" class="w-full h-64 object-cover rounded">
                         <div class="game-overlay absolute inset-0 bg-black/50 opacity-0 transition-opacity duration-300 flex items-center justify-center">
-                            <button class="bg-[#0074E4] px-6 py-2 rounded font-medium hover:bg-[#0064c4]">
+                            <button class="bg-[#303030] px-6 py-2 rounded font-medium hover:bg-[#404040]">
                                 View Details
                             </button>
                         </div>
                     </div>
                     <div class="mt-4">
-                        <h3 class="text-lg font-medium">Game Title {{ $i }}</h3>
-                        <p class="text-gray-400 text-sm mb-2">Action, Adventure</p>
+                        <h3 class="text-lg font-medium">{{ $titles[$i-1] }}</h3>
+                        <p class="text-gray-400 text-sm mb-2">{{ $categories[$i-1] }}</p>
                         <div class="flex justify-between items-center">
-                            <span class="font-bold">$29.99</span>
-                            <button class="bg-[#303030] px-4 py-1 rounded text-sm hover:bg-[#404040]">
+                            <span class="font-bold">{{ $prices[$i-1] }}</span>
+                            <button class="bg-[#303030] px-4 py-1 text-sm hover:bg-[#404040]">
                                 Add to Cart
-                            </button>
+                            </button>                            
                         </div>
                     </div>
                 </div>
                 @endfor
             </div>
         </div>
+
 
         <!-- Free Games Section -->
         <div class="p-8 bg-[#121212]">
@@ -157,7 +207,7 @@
                 </div>
             </div>
             <div class="mt-8 pt-8 border-t border-gray-800 text-center text-gray-400">
-                <p>&copy; 2025 Game Store. All rights reserved.</p>
+                <p>&copy; 2025 Fire Link Shrine. All rights reserved.</p>
             </div>
         </footer>
     </div>
