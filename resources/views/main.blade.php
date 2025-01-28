@@ -88,28 +88,27 @@
                         'images/gos.jpeg'
                     ];
 
-                    // Array judul game untuk setiap game
                     $titles = [
-                        'Elden Ring',
-                        'Sekiro: Shadows Die Twice - GOTY Edition',
-                        'Resident Evil 4 Remake',
-                        'The Last of Us Part II',
-                        'Resident Evil 2 Remake',
-                        'Assasins Creed Odyssey',
-                        'EA Sports FIFA 25',
-                        'Ghost of Tsushima'
+                    'Elden Ring',
+                    'Sekiro: Shadows Die Twice - GOTY Edition',
+                    'Resident Evil 4 Remake',
+                    'The Last of Us Part II',
+                    'Resident Evil 2 Remake',
+                    'Assassin\'s Creed Odyssey',
+                    'EA Sports FIFA 25',
+                    'Ghost of Tsushima'
                     ];
 
                     // Array harga untuk setiap game
                     $prices = [
-                        'Rp 699.999',
-                        'Rp 499.999',
-                        'Rp 799.999',
-                        'Rp 899.999',
-                        'Rp 649.999',
-                        'Rp 749.999',
-                        'Rp 899.999',
-                        'Rp 799.999'
+                        'Rp 1.000.000', 
+                        'Rp 800.000',   
+                        'Rp 830.999',  
+                        'Rp 900.000',  
+                        'Rp 649.999',   
+                        'Rp 749.999',   
+                        'Rp 899.999',   
+                        'Rp 799.999'   
                     ];
 
                     // Array kategori untuk setiap game
@@ -122,8 +121,8 @@
                         'Action, RPG',
                         'Sports, Action',
                         'Action, Adventure'
-                    ];
-                @endphp
+                        ];
+                    @endphp
                 
                 @for ($i = 1; $i <= 8; $i++)
                 <div class="game-card relative group">
@@ -150,81 +149,61 @@
             </div>
         </div>
 
-<!-- Free Games Section -->
-<div class="p-8 bg-[#121212]">
-    <h2 class="text-2xl font-bold mb-6">Free Games</h2>
-    <div class="relative">
-        <!-- Previous Button -->
-        <button id="prevButton" onclick="prevSlide()" class="absolute left-0 top-1/2 -translate-y-1/2 z-10 p-2 bg-black/50 rounded-full hover:bg-black/70 disabled:opacity-50 disabled:cursor-not-allowed">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-            </svg>
-        </button>
-
-        <!-- Slider Container -->
-        <div class="overflow-hidden mx-12">
-            <div id="slider" class="flex transition-transform duration-300 ease-in-out">
-                <div class="grid grid-cols-3 gap-6 min-w-full">
-                    @for ($i = 1; $i <= 3; $i++)
-                    <div class="w-full">
-                        <div class="bg-[#202020] rounded-lg overflow-hidden">
-                            <img src="https://via.placeholder.com/600x400" alt="Free Game" class="w-full h-48 object-cover">
-                            <div class="p-4">
-                                <h3 class="text-lg font-medium mb-2">Free Game {{ $i }}</h3>
-                                <p class="text-gray-400 text-sm mb-4">Free until 01/30/2025</p>
-                                <button class="w-full bg-[#0074E4] py-2 rounded font-medium hover:bg-[#0064c4]">
-                                    Get Now
-                                </button>
-                            </div>
+        <!-- Free Games Section -->
+        @php
+        $freeGames = [
+            [
+                'image' => '/images/dota 2.jpeg',
+                'title' => 'Dota 2',
+                'date' => '01/30/2025'
+            ],
+            [
+                'image' => 'images/cs2.png',
+                'title' => 'Counter-Strike 2',
+                'date' => '02/05/2025'
+            ],
+            [
+                'image' => 'images/pubg.jpeg',
+                'title' => 'PlayerUnknowns Battlegrounds',
+                'date' => '02/10/2025'
+            ],
+            [
+                'image' => 'images/apex.jpeg',
+                'title' => 'Apex Legends',
+                'date' => '02/15/2025'
+            ],
+            [
+                'image' => 'images/fortnite.jpeg',
+                'title' => 'Fortnite',
+                'date' => '02/10/2025'
+            ],
+            [
+                'image' => 'images/Diablo.jpg',
+                'title' => 'Diablo III',
+                'date' => '02/10/2025'
+            ],
+        ];
+        @endphp
+        
+        <div class="p-8 bg-[#121212]">
+            <h2 class="text-2xl font-bold mb-6">Free Games</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+             @foreach ($freeGames as $game)
+                <div class="w-full">
+                 <div class="bg-[#202020] rounded-lg overflow-hidden">
+                    <img src="{{ $game['image'] }}" alt="{{ $game['title'] }}" class="w-full h-48 object-cover">
+                     <div class="p-4">
+                        <h3 class="text-lg font-medium mb-2">{{ $game['title'] }}</h3>
+                        <p class="text-gray-400 text-sm mb-4">Free until {{ $game['date'] }}</p>
+                            <button class="w-full bg-[#ffffff] py-2 text-black rounded font-medium hover:bg-[#787a7d]">
+                            Install Now
+                            </button>
                         </div>
                     </div>
-                    @endfor
                 </div>
+            @endforeach
             </div>
         </div>
-
-        <!-- Next Button -->
-        <button id="nextButton" onclick="nextSlide()" class="absolute right-0 top-1/2 -translate-y-1/2 z-10 p-2 bg-black/50 rounded-full hover:bg-black/70 disabled:opacity-50 disabled:cursor-not-allowed">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-            </svg>
-        </button>
-    </div>
-</div>
-
-<script>
-    let currentIndex = 0;
-    const slider = document.getElementById('slider');
-    const prevButton = document.getElementById('prevButton');
-    const nextButton = document.getElementById('nextButton');
-    const totalGroups = 2; // Total number of groups (6 items / 3 per view = 2 groups)
-
-    function updateSlider() {
-        // Move the slider by 100% for each group
-        slider.style.transform = `translateX(-${currentIndex * 100}%)`;
-        
-        // Update button states
-        prevButton.disabled = currentIndex === 0;
-        nextButton.disabled = currentIndex === totalGroups - 1;
-    }
-
-    function nextSlide() {
-        if (currentIndex < totalGroups - 1) {
-            currentIndex++;
-            updateSlider();
-        }
-    }
-
-    function prevSlide() {
-        if (currentIndex > 0) {
-            currentIndex--;
-            updateSlider();
-        }
-    }
-
-    // Initialize slider
-    updateSlider();
-</script>
 
         <!-- Footer -->
         <footer class="bg-[#202020] p-8">
@@ -263,7 +242,7 @@
                 </div>
             </div>
             <div class="mt-8 pt-8 border-t border-gray-800 text-center text-gray-400">
-                <p>&copy; 2025 Fire Link Shrine. All rights reserved.</p>
+                <p>&copy; 2025 Janie Natalie cantik. All rights reserved.</p>
             </div>
         </footer>
     </div>
